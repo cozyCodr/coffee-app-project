@@ -10,12 +10,6 @@ ALGORITHMS = ['RS256']
 API_AUDIENCE = 'coffee'
 
 # AuthError Exception
-'''
-AuthError Exception
-A standardized way to communicate auth failure modes
-'''
-
-
 class AuthError(Exception):
     def __init__(self, error, status_code):
         self.error = error
@@ -23,17 +17,6 @@ class AuthError(Exception):
 
 
 # Auth Header
-
-'''
-@TODO:DONE implement get_token_auth_header() method
-    it should attempt to get the header from the request
-        it should raise an AuthError if no header is present
-    it should attempt to split bearer and the token
-        it should raise an AuthError if the header is malformed
-    return the token part of the header
-'''
-
-
 def get_token_auth_header():
     """
     check if token header contains authorization,
@@ -138,15 +121,6 @@ def verify_decode_jwt(token):
         'code': 'invalid_header',
                 'description': 'Unable to find the appropriate key.'
     }, 400)
-'''
-@TODO:DONE implement @requires_auth(permission) decorator method
-    @INPUTS
-        permission: string permission (i.e. 'post:drink')
-    it should use the get_token_auth_header method to get the token
-    it should use the verify_decode_jwt method to decode the jwt
-    it should use the check_permissions method validate claims and check the requested permission
-    return the decorator which passes the decoded payload to the decorated method
-'''
 
 
 def requires_auth(permission=''):

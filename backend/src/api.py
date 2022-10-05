@@ -57,9 +57,9 @@ def create_drink(jwt):
     body = request.get_json()
 
     try:
-        req_title = body.get('title', None)
-        req_recipe = json.dumps(body.get('recipe', None))
-        drink = Drink(title=req_title, recipe=req_recipe)
+        new_title = body.get('title', None)
+        new_recipe = json.dumps(body.get('recipe', None))
+        drink = Drink(title=new_title, recipe=new_recipe)
         drink.insert()
 
         drink = drink.long()
