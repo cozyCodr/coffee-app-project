@@ -128,7 +128,6 @@ def requires_auth(permission=''):
         @wraps(f)
         def wrapper(*args, **kwargs):
             jwt = get_token_auth_header()
-            # print(f'jwt passed to payload: {jwt}')
             try:
                 payload = verify_decode_jwt(jwt)
             except:
@@ -137,7 +136,6 @@ def requires_auth(permission=''):
                     'description': 'Unauthorized'
                 }, 401)
 
-            print(f'payload before passing: {payload}')
             check_permissions(permission, payload)
 
             return f(payload, *args, **kwargs)
